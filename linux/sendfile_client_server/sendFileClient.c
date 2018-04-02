@@ -39,7 +39,7 @@ int main(int argc, char* argv[]){
 		return -1;
 	}
 	
-	if( (sock_fd = socket(AF_INET, SOCK_STREAM,0)) ==-1){//open socke
+	if( (sock_fd = socket(AF_INET, SOCK_STREAM,0)) ==-1){//open socket
 		printf("error -socekt();\n");
 		return -1;
 	}
@@ -50,7 +50,7 @@ int main(int argc, char* argv[]){
 	inet_pton(AF_INET,ip_addr,&serv_addr.sin_addr);
 	bzero( &(serv_addr.sin_zero), 8);
 
-	if( connect(sock_fd, (struct sockaddr *)&serv_addr, sizeof(struct sockaddr))==-1){//connet to server
+	if( connect(sock_fd, (struct sockaddr *)&serv_addr, sizeof(struct sockaddr))==-1){//connect to server
 		printf("error - connect();\n");
 		return -1;
 	}
