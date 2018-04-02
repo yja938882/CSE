@@ -1,5 +1,5 @@
 # CSE
 ## DataSicence
 <ul>
-  <li>Apriori Algoritme</li>
+  <li>Apriori Algorithm</li>
 </ul>
