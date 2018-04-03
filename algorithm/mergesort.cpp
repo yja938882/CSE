@@ -5,7 +5,7 @@
 using namespace std;
 
 /**
-    @breif arr[left ... mid] , arr[mid+1 ... right ] 두 배열을 정렬하며 병합한다.
+    @brief arr[left ... mid] , arr[mid+1 ... right ] 두 배열을 정렬하며 병합한다.
 */
 void merge(int *arr, int left,int mid, int right){
     int i = left , j = mid+1, k = 0;
