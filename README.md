@@ -6,3 +6,4 @@
 ## AI
 ## Algorithm
 * Merge Sort
+* Quick Sort
