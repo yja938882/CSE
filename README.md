@@ -7,3 +7,4 @@
 ## Algorithm
 * Merge Sort
 * Quick Sort
+* Trie
