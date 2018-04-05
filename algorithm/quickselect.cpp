@@ -19,7 +19,7 @@ int quickSelect(int *arr , int left, int right, int k)
 	if( k>0 && k <= right - left +1 ){
 		int part = partition( arr, left, right );
 
-		if(	part - left == k-1 )	return arr[part];
+		if( part - left == k-1 )	return arr[part];
 		if( part - left > k-1 )		return quickSelect( arr, left, part-1, k );
 		return quickSelect( arr, part + 1, right, k -part +left -1 );
 	}
