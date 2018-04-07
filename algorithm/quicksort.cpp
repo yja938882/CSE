@@ -2,7 +2,6 @@
 // Copyright 2018년 주안. All rights reserved.
 
 #include <iostream>
-#define SWAP(a,b) a^=b; b^=a; a^=b;
 using namespace std;
 
 /**

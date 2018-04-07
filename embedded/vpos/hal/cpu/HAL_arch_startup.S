@@ -121,7 +121,15 @@ vh_VPOS_reset:
     	msr cpsr_cxsf,r1            
   	ldr sp,=vh_svcstack	
 
-	// user mode sp 
+	// user mode sp
+    //1 . get CPSR
+    //2 . Clear mode bit , and interrupt mask bit to 0
+    //3 . Set the mode bit and interrupt mask bit to 0
+    //4 . set the mode bit of the desired mode and set the intterrupt mask bit
+    mrs r0, cpsr
+    bic r0,r0,#vh_MODEMASK
+    orr r1,r0,#vh_USERMODE
+    msr cpsr, r1
 
 	b VPOS_kernel_main
 
