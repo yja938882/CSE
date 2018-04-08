@@ -10,5 +10,7 @@
 ## Algorithm
 * Merge Sort
 * Quick Sort
+* Counting Sort
 * Trie
 * Quick Select
+
