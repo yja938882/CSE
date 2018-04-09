@@ -83,16 +83,30 @@ vh_VPOS_reset:
 	str	r0, vk_save_irq_current_tcb_bottom
 
 	// Mask interrupt and fast interrupt
-
+    msr r0, cpsr
+    orr r0, r0, #0xc0
+    msr cpsr, r0
         
 	
 	// Invalidate all instruction caches to point of unification. Also flushes branch target cache.
-	
+    mov r0, #0x00
+    mcr p15, 0, r0, c7, c5, 0
 	// Control Register Setting
-	
+
+    // Read Control Register
+	mrc p15, 0, r0, c1, c0, 0
+    bic r0, r0, #0x01
+    bic r0, r0, #0x04
+    bic r0, r0, #0x1000
+    bic r0, r0, #0x2000
+    orr r0, r0, #0x02
+    orr r0, r0, #0x800
+    mcr p15, 0,r0, c1, c0, 0
 	
 	// change vector table base address (0x20008044)
-	
+    ldr r0, =vh_vector_base
+    mcr p15, 0, r0, c12, c0, 0
+
 	// stack pointer setting
 	mrs r0,cpsr
 	
