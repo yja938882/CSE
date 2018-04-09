@@ -8,6 +8,7 @@
 * vpos
 ## AI
 ## Algorithm
+* PowerSet
 * Merge Sort
 * Quick Sort
 * Counting Sort
