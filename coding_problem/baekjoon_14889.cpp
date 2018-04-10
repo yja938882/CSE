@@ -4,6 +4,9 @@
 using namespace std;
 int min_diff = INT_MAX;
 
+/**
+	@brief update minimum difference of team score
+*/
 void updateTeam( vector<int> teamA , vector<int> teamB, int** S){
 	int sumA = 0;
 	for( int i=1; i<teamA.size(); i++){
@@ -25,6 +28,9 @@ void updateTeam( vector<int> teamA , vector<int> teamB, int** S){
 	if(min_diff > diff) min_diff = diff;
 }
 
+/**
+	@brief nCr 
+*/
 void combination( int n , int r , bool* flag, int N , int ** S){
 	vector<int> teamA;
 	vector<int> teamB;
