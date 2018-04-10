@@ -16,4 +16,5 @@
 * Quick Select
 ## Coding Problems
 * 백준 - 14891번 톱니바퀴 ( Recursion )
+* 백준 - 14889번 스타트와 링크( Combination )
 
