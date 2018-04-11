@@ -1,5 +1,6 @@
 # CSE
 ## Graduation Project( Linux- sendfile 개선 )
+* kernel compile
 * sendfile client and server
 ## DataSicence
 * Apriori Algorithm
