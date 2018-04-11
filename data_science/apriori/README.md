@@ -6,7 +6,7 @@
   * 실행     : #> [excutable_file_name] [minimum support] [input_file] [output_file] 
   
 ## Pseudo-code
-  C[K] : Candidate itemset of size K </br>
+  >C[K] : Candidate itemset of size K </br>
   F[K] : Frequent itemset of size K </br></br>
   L[1] = { frequent items } </br>
   for( k = 1; L[k] != Empty ; k++) </br>
