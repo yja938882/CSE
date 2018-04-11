@@ -4,7 +4,7 @@
 * sendfile client and server
 ## DataSicence
 * [Apriori Algorithm](https://github.com/yja938882/CSE/tree/master/data_science/apriori)
-* Decision Tree
+* [Decision Tree](https://github.com/yja938882/CSE/tree/master/data_science/decision_tree)
 ## Embedded
 * vpos
 ## AI
