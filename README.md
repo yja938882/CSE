@@ -3,8 +3,8 @@
 * kernel compile
 * sendfile client and server
 ## DataSicence
-* Apriori Algorithm
-* Decision Tree
+* [Apriori Algorithm](https://github.com/yja938882/CSE/tree/master/data_science/apriori)
+* [Decision Tree](https://github.com/yja938882/CSE/tree/master/data_science/decision_tree)
 ## Embedded
 * vpos
 ## AI
@@ -16,6 +16,8 @@
 * Counting Sort
 * Trie
 * Quick Select
+## System Programming
+* ls 구현
 ## Coding Problems
 * 백준 - 14891번 톱니바퀴 ( Recursion )
 * 백준 - 14888번 연산자 끼워넣기 ( DFS )
