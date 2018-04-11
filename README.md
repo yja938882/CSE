@@ -3,7 +3,7 @@
 * kernel compile
 * sendfile client and server
 ## DataSicence
-* Apriori Algorithm
+* [Apriori Algorithm](https://github.com/yja938882/CSE/tree/master/data_science/apriori)
 * Decision Tree
 ## Embedded
 * vpos
