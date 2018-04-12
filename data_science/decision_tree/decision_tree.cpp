@@ -347,7 +347,7 @@ class DecisionTree{
 			return;
 		if( node->isLeaf)
 			return;
-		if( hasAllSameLabel(idMap.classId, node->tupleId)){
+		if( isInSameClass(node->tupleId)){
 			node->isLeaf = true;
 			node->resultLabelId = idMap.tuples[ node->tupleId[0]][idMap.classId];
 			return;
@@ -557,7 +557,7 @@ void printTestData(IdMap pIdMap, vector<int> pAttr, vector< vector<int> > pTestT
 /**
 	
 */
-void wirteResult(char* pFileName , DecisionTree pDTree, vector< int> pAttr, vector< vector<int > > pTestTuple){
+void writeResult(char* pFileName , DecisionTree pDTree, vector< int> pAttr, vector< vector<int > > pTestTuple){
 	ofstream outFile;
 	outFile.open(pFileName);
 	if(!outFile.is_open()){
@@ -594,7 +594,7 @@ int main(int argc, char *argv[]){
 	vector<int> test_attrs;
 	vector< vector<int> > test_tuples;
     readTestData(idMap , argv[2] , test_attrs, test_tuples);
-    wirteResult(argv[3] , dTree , test_attrs , test_tuples );
+    writeResult(argv[3] , dTree , test_attrs , test_tuples );
     
   	
     return 0;
