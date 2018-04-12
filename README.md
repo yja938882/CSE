@@ -1,7 +1,7 @@
 # CSE
 ## Graduation Project( Linux- sendfile 개선 )
-* kernel compile
-* sendfile client and server
+* [kernel compile](https://github.com/yja938882/CSE/tree/master/linux/sendfile_client_server)
+* [sendfile client and server](https://github.com/yja938882/CSE/tree/master/linux/sendfile_client_server)
 ## DataSicence
 * [Apriori Algorithm](https://github.com/yja938882/CSE/tree/master/data_science/apriori)
 * [Decision Tree](https://github.com/yja938882/CSE/tree/master/data_science/decision_tree)
