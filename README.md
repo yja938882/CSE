@@ -8,16 +8,16 @@
 ## Embedded
 * vpos
 ## AI
-* Iterative Deepening Search
-* Greedy Best First Search
+* [Iterative Deepening Search](https://github.com/yja938882/CSE/tree/master/AI/IterativeDeepeningSearch)
+* [Greedy Best First Search](https://github.com/yja938882/CSE/tree/master/AI/GreedyBestFirstSearch)
 ## Algorithm
-* Combination
-* PowerSet
-* Merge Sort
-* Quick Sort
-* Counting Sort
-* Trie
-* Quick Select
+* [Combination](https://github.com/yja938882/CSE/blob/master/algorithm/combination.cpp)
+* [PowerSet](https://github.com/yja938882/CSE/blob/master/algorithm/powerset.cpp)
+* [Merge Sort](https://github.com/yja938882/CSE/blob/master/algorithm/mergesort.cpp)
+* [Quick Sort](https://github.com/yja938882/CSE/blob/master/algorithm/quicksort.cpp)
+* [Counting Sort](https://github.com/yja938882/CSE/blob/master/algorithm/countingsort.cpp)
+* [Trie](https://github.com/yja938882/CSE/blob/master/algorithm/trie.cpp)
+* [Quick Select](https://github.com/yja938882/CSE/blob/master/algorithm/quickselect.cpp)
 ## System Programming
 * ls 구현
 ## Coding Problems
