@@ -8,6 +8,8 @@
 ## Embedded
 * vpos
 ## AI
+* Iterative Deepening Search
+* Greedy Best First Search
 ## Algorithm
 * Combination
 * PowerSet
