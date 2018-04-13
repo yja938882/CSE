@@ -19,7 +19,7 @@
 * [Trie](https://github.com/yja938882/CSE/blob/master/algorithm/trie.cpp)
 * [Quick Select](https://github.com/yja938882/CSE/blob/master/algorithm/quickselect.cpp)
 ## System Programming
-* ls 구현
+* [ls 구현](https://github.com/yja938882/CSE/blob/master/system_study/ls.c)
 ## Coding Problems
 * [백준 - 14891번 톱니바퀴 ( Recursion )](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_14891.cpp
 )
