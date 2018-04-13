@@ -29,3 +29,5 @@
 * [백준 - 14503번 로봇청소기](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_14503.cpp)
 * [백준 - 14502번 연구소( Combination )](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_14502.cpp)
 * [백준 - 14501번 퇴사 ( PowerSet )](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_14501.cpp)
+* [백준 - 14499번 주사위](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_14499.cpp)
+* [백준 - 14500번 테트로미노](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_14499.cpp)
