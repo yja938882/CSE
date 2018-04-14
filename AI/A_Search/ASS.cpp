@@ -231,7 +231,7 @@ int ASS( int **arr ,int N, int M, vector< pair<int, int> > dest){
         return mark_sol(arr, cur);
     }
 
-    if(arr[ cur->n][ cur->m] != START){
+    if(arr[ cur->n][ cur->m] != START && arr[ cur->n][cur->m]!=DEST ){
         arr[ cur->n ][ cur->m ] = VISITED; 
         all_visited_node.push_back( cur );
     }
@@ -276,7 +276,8 @@ int mark_sol( int** arr, node* node){
     struct node* nds = node;
     int length = 0;
     while( (nds)!=NULL ){
-        arr[nds->n][nds->m] = SOL_VISITED;
+       	if( arr[nds->n][nds->m]!= START && arr[nds->n][nds->m]!=DEST)
+		 	arr[nds->n][nds->m] = SOL_VISITED;
         length ++;
         nds = nds->prev;
     }
