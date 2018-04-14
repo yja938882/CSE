@@ -1,6 +1,11 @@
+/*
+* Iterarive Deepening Search
+* @author : Yeon JuAn 
+*/
 #include <iostream>
 #include <fstream>
 using namespace std;
+
 const int VISITED = 5;
 const int WALL = 1;
 const int DEST = 4;
@@ -9,33 +14,31 @@ const int START = 3;
 
 bool isReachable( int**, int, int, int, int );
 bool isDest( int**, int, int );
-bool IDS( int**, int, int, int, int, int );
+int IDS( int** arr, int, int, int, int);
+bool LDS( int**, int, int, int, int, int );
 void printArr( int **, int, int );
 int** readInput(const char *, int*, int *, int *, int *);
 void writeResult(const char *, int **, int, int, int );
 
-int global_count = 0;
+int global_count = 0; // time counter
 
 int main(int argc, char* argv[]){
-    int N,M;
-    int sn, sm;
-    int ** arr ;
-    int limit = 1;
-    if( argc != 3){
+    int N,M;    // row, col size
+    int sn, sm; // start row, colum
+    int ** arr ;    // Maze array
+
+    if( argc != 3){ // Wrong arguments
         cout<<" error wrong argument!"<<endl;
         exit(-1);
     }    
-
-    arr = readInput(argv[1],&N, &M, &sn, &sm);
-
-    while(1){
-        if( IDS(arr, sn, sm, N, M, limit ) )
-            break;
-        limit++;
-    }
     
+    arr = readInput(argv[1],&N, &M, &sn, &sm);  // Read data
+    
+    int limit = IDS(arr, sn, sm, N, M); // Iterarice Deepening Search
+
     printArr( arr, N, M);
-    writeResult(argv[2], arr, N, M, limit);
+    
+    writeResult(argv[2], arr, N, M, limit); // Write result
     return 0;
 }
 
@@ -51,7 +54,7 @@ int main(int argc, char* argv[]){
 int** readInput(const char *pFileName , int* _N, int *_M, int* _n, int *_m ){
     ifstream inputFile;
     inputFile.open(pFileName);
-    if(!inputFile.is_open()){
+    if(!inputFile.is_open()){   // Open error
         cout<<" error open file : "<<pFileName<<endl;
         exit(-1);
     }
@@ -67,10 +70,12 @@ int** readInput(const char *pFileName , int* _N, int *_M, int* _n, int *_m ){
     for( int i=0; i<N; i++ ){
         arr[i] = new int[M];
     }
+
+    // Read maze
    for( int n=0; n<N; n++){
         for( int m=0; m<M; m++){
             inputFile >> arr[n][m];
-            if(arr[n][m] == START){
+            if(arr[n][m] == START){ // Get start position
                 *(_n) = n;
                 *(_m) = m;
             }
@@ -87,7 +92,7 @@ int** readInput(const char *pFileName , int* _N, int *_M, int* _n, int *_m ){
     @return 도달 가능한지 여부 반환
 */
 bool isReachable(int** arr, int n , int m , int N, int M){
-    if( n < 0 || m <0 || n>=N || m>=M )
+    if( n < 0 || m <0 || n>=N || m>=M ) // Out of array
         return false;
     return arr[n][m] == START || arr[n][m] == ROAD || arr[n][m] == DEST;
 }
@@ -103,42 +108,55 @@ bool isDest( int** arr, int n, int m){
 }
 
 /**
-    @brief Interative Deepening Search
+    @brief Iterarice Deepening Search
+    @param arr 미로 배열
+    @param n 시작 행 위치
+    @param m 시작 열 위치
 */
-bool IDS(int** arr, int n, int m, int N, int M, int limit){
+int IDS( int** arr, int n, int m, int N, int M ){
+    int limit = 1;
+    while(1){
+        if( LDS(arr, n, m, N, M, limit ) )    // Limited Deepening Search
+            break;
+        limit++;    // Increase Limit
+    }
+    return limit;
+}
+
+/**
+    @brief Limited Deepening Search
+*/
+bool LDS(int** arr, int n, int m, int N, int M, int limit){
 
     if( !isReachable(arr, n, m, N, M))
         return false;
     
-    if( limit<= 0)
+    if( limit<= 0)  // limit depth
         return false;
     
-	global_count++;
+	global_count++;    // Count time
 
-    if( isDest( arr, n, m))
+    if( isDest( arr, n, m)) // Find goal
         return true;
 
-    int before = arr[n][m];
-    if(arr[n][m]!= START)
+    int before = arr[n][m]; // Save current maze node state
+    if(arr[n][m]!= START)   // Set visited
         arr[n][m] = VISITED;
 
-    if( IDS( arr, n, m+1, N, M , limit -1)){
+    // Search Child nodes
+    if( LDS( arr, n, m+1, N, M , limit -1)){    // Right
         return true;
     }
-
-    if( IDS( arr, n, m-1, N, M , limit -1)){
+    if( LDS( arr, n, m-1, N, M , limit -1)){    // Left
         return true;
     }
-
-    if( IDS( arr, n-1, m ,N, M, limit-1 )){
+    if( LDS( arr, n-1, m ,N, M, limit-1 )){     // Up
         return true;
     }
-
-    if( IDS( arr, n+1, m, N, M , limit -1)){
+    if( LDS( arr, n+1, m, N, M , limit -1)){    // Down
         return true;
     }
-
-    arr[n][m] = before;
+    arr[n][m] = before; // Recover maze node state
     return false;
 }
 
@@ -165,7 +183,7 @@ void printArr( int ** arr, int N, int M){
 void writeResult(const char *pFileName ,int **arr, int N, int M, int limit){
 	ofstream outFile;
 	outFile.open(pFileName);
-	if(!outFile.is_open()){
+	if(!outFile.is_open()){    // Open error
 		cout<<"error";
 		return;
 	}	

@@ -1,3 +1,7 @@
+/*
+* Greedy Best First Search
+* @author : Yeon JuAn 
+*/
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -46,20 +50,20 @@ int main(int argc, char* argv[]){
     int N,M;
     int sn, sm;
     int ** arr ;
-    int limit = 1;
     vector< pair<int, int> > dest;
 
-    if( argc!= 3){
+    if( argc!= 3){  // Wrong arguments
         cout<<" errir wrong argument!"<<endl;
         exit(-1);
     }
 
-    arr = readInput(argv[1],&N, &M, &sn, &sm, dest);
+    arr = readInput(argv[1],&N, &M, &sn, &sm, dest);    // Read maze
     
-    pqueue.push( createNode( sn, sm,dest,  NULL));
-    int length = GBFS( arr, N, M, dest);
+    pqueue.push( createNode( sn, sm,dest,  NULL));  // Push Start node to heap
     
-    writeResult( argv[2], arr, N, M, length);
+    int length = GBFS( arr, N, M, dest);    // Greedy Best First Search
+    
+    writeResult( argv[2], arr, N, M, length);   // Write result
   
     return 0;
 }
@@ -226,6 +230,7 @@ int GBFS( int **arr ,int N, int M, vector< pair<int, int> > dest){
     int sn = cur->n;
     int sm = cur->m;
   
+    // Put Children node to Min Heap
     if( isReachable( arr, sn -1, sm, N, M ) ){ // Left
         pqueue.push( createNode(sn-1, sm, dest , cur ) );
     }
