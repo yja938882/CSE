@@ -12,6 +12,7 @@
 * [Greedy Best First Search](https://github.com/yja938882/CSE/tree/master/AI/GreedyBestFirstSearch)
 * [A\* Search](https://github.com/yja938882/CSE/tree/master/AI/A_Search)
 ## Algorithm
+* [Maximum Sub Array](https://github.com/yja938882/CSE/blob/master/algorithm/max_sub_array.cpp)
 * [Combination](https://github.com/yja938882/CSE/blob/master/algorithm/combination.cpp)
 * [PowerSet](https://github.com/yja938882/CSE/blob/master/algorithm/powerset.cpp)
 * [Merge Sort](https://github.com/yja938882/CSE/blob/master/algorithm/mergesort.cpp)
