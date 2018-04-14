@@ -31,3 +31,7 @@
 * [백준 - 14501번 퇴사 ( PowerSet )](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_14501.cpp)
 * [백준 - 14499번 주사위](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_14499.cpp)
 * [백준 - 14500번 테트로미노](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_14499.cpp)
+* [백준 - 1525번 퍼즐](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_1525.cpp)
+* [백준 - 1697번 숨바꼭질](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_1697.cpp)
+* [백준 - 2251번 물통](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_2251.cpp)
+* [백준 - 2309번 일곱 난쟁이](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_2309.cpp)
