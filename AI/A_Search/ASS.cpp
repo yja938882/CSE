@@ -125,20 +125,20 @@ void writeResult(const char *pFileName, int **arr, int N, int M, int length){
     ofstream outFile;
     outFile.open( pFileName );
     if( !outFile.is_open() ){
-        cout<< " error - open file :"<<pFileName<<endl;
+        cout << " error - open file :" << pFileName << endl;
         exit(-1);
     }
 
     for( int n=0; n<N; n++){
         for( int m=0; m<M; m++ ){
-            outFile<<arr[n][m];
+            outFile << arr[n][m] << " ";
         }
-        outFile<<"\n";
+        outFile << "\n";
     }
 
-    outFile<<"---\n";
-    outFile<<"length="<<length<<endl;
-    outFile<<"time="<<global_count<<endl;
+    outFile << "---\n";
+    outFile << "length=" << length << endl;
+    outFile << "time=" << global_count << endl;
 
     outFile.close();
 }
@@ -260,7 +260,7 @@ int ASS( int **arr ,int N, int M, vector< pair<int, int> > dest){
 void printArr( int ** arr, int N, int M){
     for( int n=0; n<N; n++){
         for( int m=0; m<M; m++){
-            cout<<arr[n][m]<< " ";
+            cout << arr[n][m] << " ";
         }
         cout<<"\n";
     }

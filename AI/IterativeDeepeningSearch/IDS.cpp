@@ -23,12 +23,12 @@ void writeResult(const char *, int **, int, int, int );
 int global_count = 0; // time counter
 
 int main(int argc, char* argv[]){
-    int N,M;    // row, col size
+    int N, M;    // row, col size
     int sn, sm; // start row, colum
     int ** arr ;    // Maze array
 
     if( argc != 3){ // Wrong arguments
-        cout<<" error wrong argument!"<<endl;
+        cout << " error wrong argument!" << endl;
         exit(-1);
     }    
     
@@ -55,7 +55,7 @@ int** readInput(const char *pFileName , int* _N, int *_M, int* _n, int *_m ){
     ifstream inputFile;
     inputFile.open(pFileName);
     if(!inputFile.is_open()){   // Open error
-        cout<<" error open file : "<<pFileName<<endl;
+        cout << " error open file : " << pFileName << endl;
         exit(-1);
     }
    
@@ -91,7 +91,7 @@ int** readInput(const char *pFileName , int* _N, int *_M, int* _n, int *_m ){
     @param m 검사할 열 변호
     @return 도달 가능한지 여부 반환
 */
-bool isReachable(int** arr, int n , int m , int N, int M){
+bool isReachable(int** arr, int n , int m , int N, int M ){
     if( n < 0 || m <0 || n>=N || m>=M ) // Out of array
         return false;
     return arr[n][m] == START || arr[n][m] == ROAD || arr[n][m] == DEST;
@@ -103,7 +103,7 @@ bool isReachable(int** arr, int n , int m , int N, int M){
     @param m 검사할 열 변호
     @return 목적지 인지 여부 반환
 */
-bool isDest( int** arr, int n, int m){
+bool isDest( int** arr, int n, int m ){
     return arr[n][m] == DEST;
 }
 
@@ -126,17 +126,17 @@ int IDS( int** arr, int n, int m, int N, int M ){
 /**
     @brief Limited Deepening Search
 */
-bool LDS(int** arr, int n, int m, int N, int M, int limit){
+bool LDS( int** arr, int n, int m, int N, int M, int limit ){
 
-    if( !isReachable(arr, n, m, N, M))
+    if( !isReachable(arr, n, m, N, M) )
         return false;
     
-    if( limit<= 0)  // limit depth
+    if( limit<= 0 )  // limit depth
         return false;
     
 	global_count++;    // Count time
 
-    if( isDest( arr, n, m)) // Find goal
+    if( isDest( arr, n, m) ) // Find goal
         return true;
 
     int before = arr[n][m]; // Save current maze node state
@@ -144,16 +144,16 @@ bool LDS(int** arr, int n, int m, int N, int M, int limit){
         arr[n][m] = VISITED;
 
     // Search Child nodes
-    if( LDS( arr, n, m+1, N, M , limit -1)){    // Right
+    if( LDS( arr, n, m+1, N, M , limit -1) ){    // Right
         return true;
     }
-    if( LDS( arr, n, m-1, N, M , limit -1)){    // Left
+    if( LDS( arr, n, m-1, N, M , limit -1) ){    // Left
         return true;
     }
-    if( LDS( arr, n-1, m ,N, M, limit-1 )){     // Up
+    if( LDS( arr, n-1, m ,N, M, limit-1 ) ){     // Up
         return true;
     }
-    if( LDS( arr, n+1, m, N, M , limit -1)){    // Down
+    if( LDS( arr, n+1, m, N, M , limit -1 ) ){    // Down
         return true;
     }
     arr[n][m] = before; // Recover maze node state
@@ -166,9 +166,9 @@ bool LDS(int** arr, int n, int m, int N, int M, int limit){
 void printArr( int ** arr, int N, int M){
     for( int n=0; n<N; n++){
         for( int m=0; m<M; m++){
-            cout<<arr[n][m]<< " ";
+            cout << arr[n][m] << " ";
         }
-        cout<<"\n";
+        cout << "\n";
     }
 }
 
@@ -180,22 +180,22 @@ void printArr( int ** arr, int N, int M){
     @param M 미로 배열 열 크기
     @param limit 최대 depth 한계
 */
-void writeResult(const char *pFileName ,int **arr, int N, int M, int limit){
+void writeResult( const char *pFileName ,int **arr, int N, int M, int limit ){
 	ofstream outFile;
-	outFile.open(pFileName);
-	if(!outFile.is_open()){    // Open error
-		cout<<"error";
+	outFile.open( pFileName );
+	if( !outFile.is_open() ){    // Open error
+		cout << "error";
 		return;
 	}	
 	for(int n=0; n<N; n++ ){
 		for( int m=0; m<M; m++ ){
-			outFile<<arr[n][m];
+			outFile << arr[n][m] <<" ";
 		}
-		outFile<<"\n";
+		outFile << "\n";
 	}
-	outFile<<"---\n";
-	outFile<<"length="<<limit -2 <<endl;
-	outFile<<"time="<<global_count;
+	outFile << "---\n";
+	outFile << "length=" << limit -2 << endl;
+	outFile << "time=" << global_count;
 	outFile.close();
 }
 
