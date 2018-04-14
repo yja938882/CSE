@@ -10,6 +10,7 @@
 ## AI
 * [Iterative Deepening Search](https://github.com/yja938882/CSE/tree/master/AI/IterativeDeepeningSearch)
 * [Greedy Best First Search](https://github.com/yja938882/CSE/tree/master/AI/GreedyBestFirstSearch)
+* [A\* Search](https://github.com/yja938882/CSE/tree/master/AI/A_Search)
 ## Algorithm
 * [Combination](https://github.com/yja938882/CSE/blob/master/algorithm/combination.cpp)
 * [PowerSet](https://github.com/yja938882/CSE/blob/master/algorithm/powerset.cpp)
