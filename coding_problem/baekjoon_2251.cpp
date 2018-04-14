@@ -2,6 +2,7 @@
 #include <queue>
 #include <algorithm> 
 using namespace std;
+
 const int BOTTLE_A = 0;
 const int BOTTLE_B = 1;
 const int BOTTLE_C = 2;
@@ -14,6 +15,7 @@ queue< struct node* > _queue;
 bool visited[201][201][201];
 int MAX[3];
 vector< int> result;
+
 struct node* createNode( int A, int B, int C){
 	struct node* n = new node;
 	n -> bottle[BOTTLE_A] = A;
@@ -48,7 +50,7 @@ void getC_emptyA( int A, int B, int C){
 		_queue.pop();
 		if( visited[ cur->bottle[BOTTLE_A] ][ cur->bottle[BOTTLE_B] ][ cur->bottle[BOTTLE_C] ] ) continue;
 
-		if( cur->bottle[BOTTLE_A] == 0)
+		if( cur->bottle[BOTTLE_A] == 0 )
 			result.push_back( cur-> bottle[BOTTLE_C] );
 
 		visited[ cur->bottle[BOTTLE_A] ][ cur->bottle[BOTTLE_B] ][ cur->bottle[BOTTLE_C] ] = true;
