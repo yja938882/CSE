@@ -24,8 +24,13 @@ void vk_timer_irq_disable(void)
 
 void vh_timer_init(void)
 {
-	
+			
 	vk_timer_flag = 0;
+
+	vh_TCFG0 = 0xff00;
+	vh_TCFG1 = 0x40000;
+	vh_TCNTB4 = 0x3e8;
+	
 }
 
 void vh_timer_irq_enable(int timer)
