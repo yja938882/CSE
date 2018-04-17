@@ -17,30 +17,40 @@
 
 #ifndef D_NODE
 #define D_NODE
+/*
+	Decision Tree 의 노드.
+*/
 struct Node{
-		bool isLeaf;
-		vector< int > tuple_ids;
-		vector< struct Node * > children;
-		int split_attr_id;
-		int result_class_id;
+		bool isLeaf;						// 마지막 노드인지 여부
+		vector< int > tuple_ids;			// 노드가 포함하고있는 튜플의 아이디
+		vector< struct Node * > children;	// 자식 노드들
+		int split_attr_id;					// 자식을 나누는 Attribute
+		int result_class_id;				// Class 결과
 	};
 #endif
+/*
+	Decision Tree Class
+*/
 class DecisionTree{
 	private :
-	
-	DecisionTable decision_table;
+	DecisionTable decision_table;	// Decision Table
 
 	public :
-	struct Node * root;
-	vector< int > predic_vote;
-	DecisionTree(DecisionTable dt);
-	struct Node * create_node();
-	bool is_equal_class( vector<int> pTupleId );
-	bool is_equal_label( int pAttrId, vector<int> pTupleId );
-	void insert_tuple( struct Node* node, int pTupleId );
-	void build_tree( struct Node* node, int pPrio );
-	void create_tree( );
-	void classify(  struct Node* node ,vector<int> &pTuple );
+	/* Constructor */
+	DecisionTree(DecisionTable dt);	// Constructor
+	
+	struct Node * root;	// Decision Tree 의 루트 노드
+
+	/* Function */
+	struct Node * create_node();	// 노드 생성
+	bool is_equal_class( vector<int> pTupleId );				// 튜플들이 모두 같은 클래스인지 여부 
+	bool is_equal_label( int pAttrId, vector<int> pTupleId );	// 튜플들이 모두 같은 라벨을 가지고 있는지 여부
+	void insert_tuple( struct Node* node, int pTupleId );		// node 에 튜플 삽입
+	void build_tree( struct Node* node );			// Build DecisionTree Recursive
+	void create_tree( );										// Decision Tree 생성
+	void classify(  struct Node* node ,vector<int> &pTuple );	// 해당 튜플을 Calssify
+	double info( vector<int> D );
+	int select_attribute( vector< int > tuple_id );
 
 	/* For Debug */
 	void debug_print_t( struct Node * node, int level, int childi, int parent_end); // print tree 

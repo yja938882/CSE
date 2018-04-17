@@ -3,14 +3,20 @@
 //  Created by 주안 on 2018. 4. 16..
 //  Copyright © 2018년 주안. All rights reserved.
 //
-
 #include "DecisionTable.hpp"
 
+/**
+    @brief Constructor
+*/
 DecisionTable::DecisionTable(){
     attr_count = 0;
    
 }
 
+/**
+    @brief Attribute 추가
+    @param pAttr 추가할 Attribute
+*/
 void DecisionTable::insert_attr( string pAttr ){
     if( attr_id_Map.count(pAttr) ) return;
     
@@ -20,6 +26,9 @@ void DecisionTable::insert_attr( string pAttr ){
     attr_count ++;
 }
 
+/**
+    @Brief  ID에 해당하는 Attribute 이름 반환
+*/
 string DecisionTable::get_attr_by_id( int pId ){
     map< int, string >::iterator it = id_attr_Map.find( pId );
     if( it == id_attr_Map.end() ){
@@ -29,6 +38,9 @@ string DecisionTable::get_attr_by_id( int pId ){
     return it->second;
 }
 
+/**
+    @brief Attribute 의 ID 반환
+*/
 int DecisionTable::get_id_by_attr( string pAttr ){
     map< string, int >::iterator it = attr_id_Map.find( pAttr );
     if( it == attr_id_Map.end() ) {
@@ -39,6 +51,9 @@ int DecisionTable::get_id_by_attr( string pAttr ){
     return it->second;
 }
 
+/**
+    @brief label 초기화
+*/
 void DecisionTable::init_label(){
     label_id_Maps.resize( attr_count );
     id_label_Maps.resize( attr_count );
@@ -46,6 +61,9 @@ void DecisionTable::init_label(){
     for( int i=0; i<label_count.size(); i++ ) label_count[i] = 0;
 }
 
+/**
+    @brief label 추가
+*/
 void DecisionTable::insert_label( int pAttrId, string pLabel ){
     if( label_id_Maps[ pAttrId ].count( pLabel ) ) return;
     
@@ -54,6 +72,9 @@ void DecisionTable::insert_label( int pAttrId, string pLabel ){
     label_count[ pAttrId ] ++;
 }
 
+/**
+    @brief attribute id 와 label id 에 해당하는 label 이름 반환
+*/
 string DecisionTable::get_label_by_id( int pAttrId, int pId ){
     map< int, string >::iterator it = (id_label_Maps[ pAttrId ]).find( pId );
     if( it == id_label_Maps[ pAttrId ].end() ){
@@ -64,6 +85,9 @@ string DecisionTable::get_label_by_id( int pAttrId, int pId ){
     return it->second;
 }
 
+/**
+    @brief attribute id 와 label이름 에 해당하는 label id 반환
+*/
 int DecisionTable::get_id_by_label( int pAttrId, string pLabel ){
     map< string, int >::iterator it = (label_id_Maps[ pAttrId ]).find( pLabel );
     if( it == (label_id_Maps[ pAttrId ]).end() ){
@@ -74,18 +98,27 @@ int DecisionTable::get_id_by_label( int pAttrId, string pLabel ){
     return it->second;
 }
 
+/**
+    @brief attribute 의 수 반환
+*/
 int DecisionTable::attrs_size(){
     return attr_count;
 }
 
+/**
+    @brief 해당 attribute id 가 가지는 label 수 반환
+*/
 int DecisionTable::labels_size( int pAttr ){
     return label_count[ pAttr ];
 }
 
+/*
+    @brief 튜플 삽입
+*/
 void DecisionTable::insert_tuple( string pTuple ){
     vector< int > tuple;
     char buf[512];
-    replace( pTuple.begin(), pTuple.end(), '\r', '\0' );
+    replace( pTuple.begin(), pTuple.end(), '\r', '\0' );    // for Windows txt
     strcpy( buf, pTuple.c_str() );
     char *tk = strtok( buf, "\t" );
     int attr_id = 0;
@@ -98,96 +131,39 @@ void DecisionTable::insert_tuple( string pTuple ){
     this->tuples.push_back( tuple );
 }
 
-double DecisionTable::_I(int * pClassCount ,  int N){
-    double sum = 0.0, ret = 0.0;
-     for(int i=0; i<N;i++){
-        if( pClassCount[i] == 0 )
-            return 0.0;
-        sum += (double)pClassCount[i];
-    }
-    for( int i=0; i< N; i++){
-        ret-=( ((double)pClassCount[i])/sum )* log2( (double)pClassCount[i] / sum);
-    }
-    return ret;
-}
-
-void DecisionTable::init_info_gain(){
-    int label_cnt = labels_size( class_id );
-    int info_D_cnt[ label_cnt ];
-
-    for ( int i=0; i< label_cnt; i++ ) info_D_cnt[i] = 0;
-
-    for ( int i=0; i< this->tuples.size(); i++ ) info_D_cnt[ this-> tuples[i][ class_id ] ] ++;
-
-    infoD = _I( info_D_cnt , label_cnt );
-    cout<<"in d :'"<<infoD;
-    for( int i=0; i< attr_count; i++ ){
-        if( i == class_id ) continue ;
-
-        int LABEL_SIZE = label_count[i];
-        int CLASS_SIZE = label_count[ class_id ];
-
-        int info_table[ LABEL_SIZE ][ CLASS_SIZE ];
-       
-        for ( int j=0; j< LABEL_SIZE; j++ ){
-            for ( int k=0; k< CLASS_SIZE; k++ )
-                info_table[j][k] = 0;
-        }
-
-        for ( int j=0; j< tuples.size(); j++ ){
-            info_table[ tuples[j][i] ][ tuples[j][class_id] ] ++;
-        }
-
-        double label_info[ LABEL_SIZE ];
-
-        for( int j=0; j< label_count[i]; j++) label_info[j] = this->_I( info_table[j], label_count[class_id] );
-
-        double info = 0.0;
-        for( int j=0; j< LABEL_SIZE; j++){
-            double sum = 0.0;
-            for( int k=0; k< CLASS_SIZE; k++){
-                sum += info_table[j][k];
-            }
-            info += (label_info[j] * (sum / (double) tuples.size() ));
-        }
-
-        pair< double, int > g = make_pair( infoD - info, i );
-        gain.push_back( g ); 
-    }
-    sort( gain.begin(), gain.end(), GreaterPair );
-
-    
-}
-
+/**
+    @brief class attribute 의 id 반환
+*/
 int DecisionTable::get_class_id(){
     return class_id;
 }
 
+/**
+    @brief 튜플의 클래스 반환 
+*/
 int DecisionTable::get_tuple_class( int pTupleId){
     return tuples[pTupleId][class_id];
 }
 
+/**
+    @brief 튜플의 라벨 반환
+*/
 int DecisionTable::get_tuple_label( int pTupleId, int pAttr ){
     return tuples[pTupleId][pAttr];
 }
 
-bool DecisionTable::GreaterPair( const pair<double , int> & a, const pair<double, int>& b){
-    return a.first > b.first;
-}
-
-int DecisionTable::get_gain_size(){
-    return gain.size();
-}
-
-int DecisionTable::get_prio_gain( int priority ){
-    return gain[priority].second;
-}
-
+/**
+    @brief 튜플의 크기 반환
+*/
 int DecisionTable::get_tuple_size(){
     return tuples.size();
 }
 
 /** For Debug **/
+
+/** For DEBUG.
+    @brief Print Attribute & Labes
+*/
 void DecisionTable::debug_print_al(){
     cout<<"===== print attributes & labels =====\n";
     for( int i=0; i< attr_count; i++ ){
@@ -199,23 +175,16 @@ void DecisionTable::debug_print_al(){
     cout<<"======================================\n";
 }
 
+/** For DEBUG.
+    @brief Print Training Tuples
+*/
 void DecisionTable::debug_print_tp(){
-    cout<<"===== print tuples =====\n";
+    cout<<"===== print tuples ===================\n";
     for( int i=0; i< this->tuples.size(); i++ ){
         for( int j=0; j< attr_count; j++ ){
             cout<< get_label_by_id( j , this->tuples[i][j] );
-            //cout<<"("<<get_id_by_label( j,get_label_by_id( j , this->tuples[i][j]) )<<") ";
         }
         cout<<"\n";
     }
-    cout<<"========================\n";
+    cout<<"======================================\n";
 }
-void DecisionTable::debug_print_ig(){
-    cout<<"===== print info gain =====\n";
-    for( int i=0; i< gain.size(); i++ ){
-        cout<<" "<< get_attr_by_id( gain[i].second )<<"("<<gain[i].first<< ") ";
-    }
-    cout<<"\n";
-    cout<<"===========================\n";
-}
-

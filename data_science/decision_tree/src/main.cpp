@@ -9,8 +9,14 @@ void error(const char* msg){
     exit(-1);
 }
 
+/**
+    @brief Training 데이터를 읽어드린다.
+    @param pFileName 읽어 드릴 파일 이름
+    @pram 저장할 데이터 vector
+*/
 void readTrainData(char * pFileName, DecisionTable &pDT ){
- 	char buf[512];
+ 	cout << "> read training data ... ";
+    char buf[512];
 	ifstream trainFile;
     trainFile.open(pFileName);
     if(!trainFile.is_open()){
@@ -18,30 +24,29 @@ void readTrainData(char * pFileName, DecisionTable &pDT ){
     }
     string inputLine;
 	getline(trainFile, inputLine);
-	replace(inputLine.begin(), inputLine.end(), '\r','\0');
+	replace(inputLine.begin(), inputLine.end(), '\r','\0'); // for Windows txt
 	strcpy(buf,inputLine.c_str());
 	char *tk = strtok(buf,"\t");
-	while( tk!=NULL ){
+
+	// read attribute
+    while( tk!=NULL ){
 		string attr(tk);
 		pDT.insert_attr(attr);
 		tk = strtok(NULL,"\t");
 	}
-
 	pDT.init_label();
 
+    // read tuples
 	while(getline(trainFile,inputLine)){
 		pDT.insert_tuple(inputLine);
     }
     pDT.debug_print_al();
-   // pDT.debug_print_tp();
-    
-    pDT.init_info_gain();
-    pDT.debug_print_ig();
-    trainFile.close();    
+    trainFile.close();
+    cout << "end!\n";
 }
 
 void readTestData(DecisionTable pDT, char *pFileName ,vector<int> &pAttr, vector< vector <int> > &pTestData ){
-    cout<<"read TestData ..."<<endl;
+    cout<<"> read test data..."<<endl;
     char buf[512];
     ifstream testFile;
     testFile.open(pFileName);
@@ -50,10 +55,11 @@ void readTestData(DecisionTable pDT, char *pFileName ,vector<int> &pAttr, vector
     }
     string inputLine;
     getline(testFile, inputLine);
-    replace(inputLine.begin(), inputLine.end(), '\r','\0');
+    replace(inputLine.begin(), inputLine.end(), '\r','\0'); // for Windows txt
     strcpy( buf, inputLine.c_str() );
     char* tk = strtok(buf, "\t");
     
+    // Read attributes
     int attrid=0;
     while( tk!= NULL){
         string attr(tk);
@@ -61,8 +67,10 @@ void readTestData(DecisionTable pDT, char *pFileName ,vector<int> &pAttr, vector
         tk = strtok(NULL, "\t");
         attrid++;
     }
+
+    // Read tuples
     while(getline(testFile, inputLine)){
-        replace(inputLine.begin(), inputLine.end(), '\r','\0');     
+        replace(inputLine.begin(), inputLine.end(), '\r','\0'); // for Windows txt
         strcpy( buf, inputLine.c_str() );
         tk = strtok(buf, "\t");
         vector< int > tuple;
@@ -76,8 +84,12 @@ void readTestData(DecisionTable pDT, char *pFileName ,vector<int> &pAttr, vector
         pTestData.push_back( tuple );
     }
     testFile.close();
+    cout << "end!\n";
 }
 
+/**
+    @brief 결과를 파일에 저장
+*/
 void writeResult(char* pFileName , DecisionTable pDT, DecisionTree pDtree, vector< vector<int > > pTestTuple){
     cout << "write result ...\n";
     ofstream outFile;
@@ -94,39 +106,42 @@ void writeResult(char* pFileName , DecisionTable pDT, DecisionTree pDtree, vecto
         for( int j=0; j< pTestTuple[i].size()-1; j++ ){
             outFile << pDT.get_label_by_id( j, pTestTuple[i][j] )<<"\t";
         }
-        if( pTestTuple[i][ pTestTuple[i].size() -1] == -1 ){
-            int max = 0;
-            int max_i = 0;
-            for( int q=0; q< pDtree.predic_vote.size(); q++){
-                if( max < pDtree.predic_vote[q] ){
-                    max = pDtree.predic_vote[q];
-                    max_i = q;
-                }
-            }
-            outFile << pDT.get_label_by_id( pDT.get_class_id(), max_i )<<"\n";
-        }
-        else
-            outFile << pDT.get_label_by_id( pDT.get_class_id(), pTestTuple[i][ pTestTuple[i].size() -1 ] )<< "\n";
+        outFile << pDT.get_label_by_id( pDT.get_class_id(), pTestTuple[i][ pTestTuple[i].size() -1 ] )<< "\n";
     }
     outFile.close();
+    cout << "end!\n"; 
 }
 
 
 int main(int argc, char *argv[]){
     DecisionTable dt;
+
+    // wring arguments
+    if( argc != 4 ){
+        cout << "wrong argument! \n";
+        return -1;
+    }
+
+    // Read training data 
     readTrainData( argv[1] , dt );
-    
+
+    // Build decision tree
     DecisionTree decision_tree ( dt );
     decision_tree.create_tree();
     decision_tree.debug_print_t( decision_tree.root , 0, 0 ,0);
+    
+    // Read test data
     vector< int> attr;
     vector< vector< int > > test_data;
     readTestData(dt, argv[2],attr, test_data);
+    
+    // decision
     for( int i=0; i< test_data.size(); i++){
         decision_tree.classify( decision_tree.root , test_data[i] );
     }
-    writeResult(argv[3], dt ,decision_tree, test_data );
 
+    //write result
+    writeResult(argv[3], dt ,decision_tree, test_data );
     return 0;
 }
 
