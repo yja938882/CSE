@@ -39,3 +39,4 @@
 * [백준 - 2309번 일곱 난쟁이](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_2309.cpp)
 * [백준 - 1463번 1로 만들기( DP )](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_1463.cpp)
 * [백준 - 9095번 1,2,3 더하기 ( DP )](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_9095.cpp)
+* [백준 - 2579번 계단 오르기 ( DP )](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_2579.cpp)
