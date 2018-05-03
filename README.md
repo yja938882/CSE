@@ -42,3 +42,4 @@
 * [백준 - 2839번 설탕배달 ( Math )](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_2839.cpp)
 * [백준 - 1978번 소수찾기 ( Math )](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_1978.cpp)
 * [백준 - 1110번 더하기 사이클( Math )](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_1110.cpp)
+* [백준 - 9663번 N-Queen (Backtracking)](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_9663.cpp)
