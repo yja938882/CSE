@@ -20,6 +20,7 @@
 * [Counting Sort](https://github.com/yja938882/CSE/blob/master/algorithm/countingsort.cpp)
 * [Trie](https://github.com/yja938882/CSE/blob/master/algorithm/trie.cpp)
 * [Quick Select](https://github.com/yja938882/CSE/blob/master/algorithm/quickselect.cpp)
+* [Heap Sort](https://github.com/yja938882/CSE/blob/master/algorithm/heap_sort.cpp)
 ## System Programming
 * [ls 구현](https://github.com/yja938882/CSE/blob/master/system_study/ls.c)
 ## Coding Problems
