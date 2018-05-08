@@ -47,3 +47,4 @@
 * [백준 - 1074번 Z (Divide and Conquer)](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_1074.cpp)
 * [백준 - 10815번 숫자카드 (Binary Search)](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_10815.cpp)
 * [백준 - 5430번 AC( Deque )](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_5430.cpp)
+* [백준 - 1890번 점프](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_1890.cpp)
