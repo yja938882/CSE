@@ -49,5 +49,5 @@
 * [백준 - 5430번 AC( Deque )](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_5430.cpp)
 * [백준 - 1890번 점프](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_1890.cpp)
 * [백준 - 1947번 선물전달( DP , 완전순열 )](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_1947.cpp)
-* [백준 - 2581번 소수](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_2581.cpp)
-* [백준 - 2504번 괄호의 값 ](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_2504.cpp)
+* [백준 - 2581번 소수 (Math)](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_2581.cpp)
+* [백준 - 2504번 괄호의 값 (Stack)](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_2504.cpp)
