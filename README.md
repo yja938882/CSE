@@ -57,3 +57,4 @@
 * [백준 - 2981번 검문 (Math-GCD)](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_1934.cpp)
 * [백준 - 5638번 이진검색트리](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_5639.cpp)
 * [백준 - 9012번 괄호](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_9012.cpp)
+* [백준 - 11725번 트리의 부모찾기](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_11725.cpp)
