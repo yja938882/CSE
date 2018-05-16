@@ -58,5 +58,6 @@
 * [백준 - 5638번 이진검색트리](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_5639.cpp)
 * [백준 - 9012번 괄호](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_9012.cpp)
 * [백준 - 11725번 트리의 부모찾기](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_11725.cpp)
-* [백준 - 11003번 최소값 찾기(Sliding Window)](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_11003.cpp)
-* [백준 - 11047번 동전 0(Greedy)](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_11047.cpp)
+* [백준 - 11003번 최소값 찾기(Sliding Window)](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_11003.cpp "슬라이딩 윈도우로 최솟값 출력하기")
+* [백준 - 11047번 동전 0(Greedy)](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_11047.cpp "합이 K가 되는 가장 적은수의 동전 찾기")
+* [백준 - 2470번 두 용액](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_2470.cpp "배열에서 두 수의 합이 가장 0에 가까운 원소 찾기")
