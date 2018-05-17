@@ -63,3 +63,5 @@
 * [백준 - 2470번 두 용액](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_2470.cpp "배열에서 두 수의 합이 가장 0에 가까운 원소 찾기")
 * [백준 - 1929번 소수 구하기](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_1929.cpp "에라토스테네스의 체를 이용하여 소수 구하기")
 * [백준 - 2750번 수 정렬하기](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_2750.cpp "오름차순 정렬 알고리즘")
+* [1016번 제곱ㄴㄴ수](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_1016.cpp "제곱수로 나눠지지 않는 수 찾기")
+* [2747번 피보나치수](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_2747.cpp "DP로 피보나치수 찾기")
