@@ -65,3 +65,5 @@
 * [백준 - 2750번 수 정렬하기](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_2750.cpp "오름차순 정렬 알고리즘")
 * [백준 - 1016번 제곱ㄴㄴ수](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_1016.cpp "제곱수로 나눠지지 않는 수 찾기")
 * [백준 - 2747번 피보나치수](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_2747.cpp "DP로 피보나치수 찾기")
+* [백준 - 7568번 덩치](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_7568.cpp "브루트포스")
+* [백준 - 1065번 한수](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_1065.cpp "브루트포스")
