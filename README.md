@@ -67,3 +67,5 @@
 * [백준 - 2747번 피보나치수](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_2747.cpp "DP로 피보나치수 찾기")
 * [백준 - 7568번 덩치](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_7568.cpp "브루트포스")
 * [백준 - 1065번 한수](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_1065.cpp "브루트포스")
+* [백준 - 4948번 골드바흐의 추측](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_4948.cpp "소수")
+* [백준 - 2661번 좋은 수열](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_2661.cpp "백트래킹" )
