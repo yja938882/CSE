@@ -70,3 +70,5 @@
 * [백준 - 1065번 한수](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_1065.cpp "브루트포스")
 * [백준 - 4948번 골드바흐의 추측](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_4948.cpp "소수")
 * [백준 - 2661번 좋은 수열](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_2661.cpp "백트래킹" )
+* [백준 - 1149번 RGB 거리](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_1149.cpp "dp")
+* [백준 - 10871번 X 보다 작은 수](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_10871.cpp)
