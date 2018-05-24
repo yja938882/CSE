@@ -76,3 +76,7 @@
 * [백준 - 10828번 스택](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_10828.cpp)
 * [백준 - 1038번 감소하는 수](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_1038.cpp)
 * [백준 - 1932번 정수삼각형](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_1932.cpp)
+* [백준 - 3036번 링](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_3036.cpp)
+* [백준 - 2231번 분해합](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_2231.cpp)
+* [백준 - 1912번 연속합](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_1912.cpp)
+* [백준 - 1753번 최단경로](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_1753.cpp)
