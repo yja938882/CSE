@@ -81,3 +81,6 @@
 * [백준 - 1912번 연속합](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_1912.cpp)
 * [백준 - 1753번 최단경로](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_1753.cpp)
 * [백준 - 11399번 ATM](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_11399.cpp)
+* [백준 - 1874번 스택수열](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_1874.cpp)
+* [백준 - 10845번 큐](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_10845.cpp)
+* [백준 - 2473번 세 용액](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_2473.cpp)
