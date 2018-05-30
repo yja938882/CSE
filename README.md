@@ -23,7 +23,8 @@
 * [Quick Select](https://github.com/yja938882/CSE/blob/master/algorithm/quickselect.cpp)
 * [Heap Sort](https://github.com/yja938882/CSE/blob/master/algorithm/heap_sort.cpp)
 ## System Programming
-* [ls 구현](https://github.com/yja938882/CSE/blob/master/system_study/ls.c)
+* [ls](https://github.com/yja938882/CSE/blob/master/system_study/ls.c)
+* [cp](https://github.com/yja938882/CSE/blob/master/system_study/cp.c)
 ## Coding Problems
 * [백준 - 14499번 주사위](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_14499.cpp)
 * [백준 - 14500번 테트로미노](https://github.com/yja938882/CSE/blob/master/coding_problem/baekjoon_14499.cpp)
