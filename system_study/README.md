@@ -4,7 +4,7 @@
 * compile : \#>gcc ls.c
 * ls, ls -l 구현
 
-## ls
+## cp
 * source : cp.c
 * compile : \#>gcc cp.c
 * cp 구현
