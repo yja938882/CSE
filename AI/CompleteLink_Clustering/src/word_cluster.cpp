@@ -82,6 +82,9 @@ void read_test_data( char * file_name , vector< struct test_cluster * > & test_c
  @ param a : word1
  @ param b : word2
  */
+double cosine_min = 100;
+double cosine_max = -100;
+
 double cosine_similarity( struct word_vector * a, struct word_vector* b ){
     double a_sum = 0.0, b_sum = 0.0 , ab_sum = 0.0;
     for( int i=0; i< (a->values).size(); i++ ){
@@ -89,29 +92,20 @@ double cosine_similarity( struct word_vector * a, struct word_vector* b ){
         b_sum += ( b->values[i] * b->values[i] );
         ab_sum += ( a->values[i] * b->values[i] );
     }
-    return ab_sum /( sqrt(a_sum) * sqrt(b_sum) );
+    double d_sum = ab_sum /( sqrt(a_sum) * sqrt(b_sum) ) ;
+    cosine_max = ( d_sum > cosine_max ? d_sum : cosine_max );
+    cosine_min = ( d_sum < cosine_min ? d_sum : cosine_min );
+    return d_sum;
 }
 
-double norm = 1.0; // for nomaization
-
-/**
- @ breif : norm 값 설정
- @ param g_v : word vector
- */
-void calc_norm( vector< struct word_vector * > g_v ){
-    double max_norm = -100.0;
+void cosine_normalization ( double ** sim_matrix , vector< struct word_vector *> &g_v ) {
+    cosine_max -= ( cosine_min );
     for( int i=0; i< g_v.size(); i++ ){
-        for( int j= i+1; j<g_v.size(); j++ ){
-            double dif = 0;
-            for( int k=0; k< 300; k++ ){
-                dif += ( g_v[i]->values[k] - g_v[j] ->values[k])*( g_v[i]->values[k] - g_v[j] ->values[k]);
-            }
-            dif = sqrt( dif );
-            if( dif > max_norm )
-                max_norm = dif;
+        for( int j=0; j<g_v.size(); j++ ){
+            sim_matrix[i][j] -=( cosine_min );
+            sim_matrix[i][j] /=( cosine_max ) ;
         }
     }
-    norm = max_norm;
 }
 
 /**
@@ -119,14 +113,29 @@ void calc_norm( vector< struct word_vector * > g_v ){
  @ param a : word1
  @ param b : word2
  */
+double euclidean_min = 100.0;
+double euclidean_max = -100.0;
+
 double euclidean_similarity( struct word_vector * a, struct word_vector* b ){
     double d_sum = 0.0;
-
     for( int i=0; i< (a->values).size(); i++ ){
         d_sum += ( a->values[i] - b->values[i] )*( a->values[i] - b->values[i] );
     }
-    d_sum = sqrt( d_sum ) / norm;
-    return 1.0-d_sum;
+    d_sum = sqrt( d_sum );
+    euclidean_max = ( d_sum > euclidean_max ? d_sum : euclidean_max );
+    euclidean_min = ( d_sum < euclidean_min ? d_sum : euclidean_min );
+    return d_sum;
+}
+
+void euclidean_normalization( double ** sim_matrix, vector< struct word_vector* > &g_v ){
+    euclidean_max -= euclidean_min;
+    for( int i=0; i<g_v.size(); i++ ){
+        for( int j=0; j<g_v.size(); j++ ){
+            sim_matrix[i][j] -= euclidean_min;
+            sim_matrix[i][j] /= euclidean_max;
+            sim_matrix[i][j] = 1.0 - sim_matrix[i][j];
+        }
+    }
 }
 
 /**
@@ -310,3 +319,46 @@ double entropy( struct cluster_result * r , vector< struct word_vector * > g_w ,
     return etp;
 }
 
+/**
+ @ breif : return weighted sum of entropy
+ */
+double weighted_entropy_sum( vector< struct cluster_result * > &result ,
+                            vector< struct word_vector * > g_v ,
+                            vector< struct test_cluster * >& test_c ){
+    double weighted_sum = 0;
+    for( int i=0; i<result.size(); i++ ){
+        weighted_sum += entropy( result[i] , g_v, test_c );
+        weighted_sum *= ( (double)(result[i] -> wv_ids.size()) / 338.0 );
+    }
+    return weighted_sum;
+}
+
+/**
+ @ breif write result data
+ */
+void write_result_data( char* file_name, vector< struct word_vector * > g_v , vector< struct cluster_result*> result ){
+    cout << "[*] write result ... start \n";
+    ofstream result_file;
+    result_file.open( file_name );
+    if( !result_file.is_open() ){
+        cout << "[!] open result file error ...\n ";
+        exit( -1 );
+    }
+    for( int i=0; i<g_v.size(); i++ ){
+        result_file << g_v[i]->word <<"\n";
+        for( int j=0; j< (g_v[i]->values).size(); j++ ){
+            result_file << to_string( g_v[i]->values[j] ) << " ";
+        }
+        result_file << "\n";
+        for( int r=0; r<result.size(); r++ ){
+            if( find( (result[r]->wv_ids).begin(), (result[r]->wv_ids).end(), i ) != (result[r]->wv_ids).end() ){
+                result_file << to_string( r + 1 );
+                break;
+            }
+        }
+        result_file << "\n";
+    }
+    
+    cout << "[*] write result ... end \n";
+    return;
+}

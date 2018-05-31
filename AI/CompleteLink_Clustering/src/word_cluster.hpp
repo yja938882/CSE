@@ -34,8 +34,13 @@ struct cluster_result{
 
 void read_word_data( char* file_name , int , vector< struct word_vector * >& );
 void read_test_data( char * , vector< struct test_cluster * > &);
+
 double cosine_similarity( struct word_vector * , struct word_vector* );
+void cosine_normalization ( double ** sim_matrix , vector< struct word_vector* > &  );
+
 double euclidean_similarity( struct word_vector *, struct word_vector* );
+void euclidean_normalization( double ** sim_matrix, vector< struct word_vector* > & );
+
 void init_sim_matrix( double (*simfunc)( struct word_vector* , struct word_vector* ), double **, vector< struct word_vector* > &);
 void get_vector_ids( struct cluster * , vector<int> & );
 double min_similarity( double **, struct cluster * , struct cluster * );
@@ -44,9 +49,10 @@ void insert_result( struct cluster_result * , struct cluster * );
 void cut_by( struct cluster* , double , vector< struct cluster_result* >& );
 void debug_print( struct cluster *);
 void print_result_cluster(vector< struct word_vector* >& g_v, struct cluster_result * r );
-void calc_norm( vector< struct word_vector * > g_v );
-void write_result_data( char *, struct cluster_result );
 double entropy( struct cluster_result * r , vector< struct word_vector * > g_w ,
                vector< struct test_cluster * > & test_cluster );
-
+double weighted_entropy_sum( vector< struct cluster_result * > &result ,
+                            vector< struct word_vector * > g_v ,
+                            vector< struct test_cluster* >& test_c );
+void write_result_data( char* file_name, vector< struct word_vector * > g_v , vector< struct cluster_result*> result );
 #endif
