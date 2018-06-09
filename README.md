@@ -6,6 +6,7 @@
 * [Apriori Algorithm](https://github.com/yja938882/CSE/tree/master/data_science/apriori)
 * [Decision Tree](https://github.com/yja938882/CSE/tree/master/data_science/decision_tree)
 * [DBSCAN](https://github.com/yja938882/CSE/tree/master/data_science/DBSCAN)
+* [Recommender](https://github.com/yja938882/CSE/tree/master/data_science/recommender)
 ## Embedded
 * vpos
 ## AI
